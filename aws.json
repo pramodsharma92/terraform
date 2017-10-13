@@ -156,6 +156,7 @@
       "Properties" : {
         "InstanceType" : { "Ref" : "InstanceType" },
         "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup" } ],
+     
         "Tags" : [
                     {
                         "Key" : "Name",
@@ -163,7 +164,7 @@
                     }
                   ],
         
-        "KeyName" : "newkey",
+        "KeyName" : "my-key",
         "ImageId" : { "Fn::FindInMap" : [ "AWSRegionArch2AMI", { "Ref" : "AWS::Region" },
                           { "Fn::FindInMap" : [ "AWSInstanceType2Arch", { "Ref" : "InstanceType" }, "Arch" ] } ] }
       }
@@ -182,7 +183,8 @@
       }
     }
   },
-
+  
+   
   "Outputs" : {
     "InstanceId" : {
       "Description" : "InstanceId of the newly created EC2 instance",
