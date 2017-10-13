@@ -183,8 +183,7 @@
       }
     }
   },
-    {
-    "Parameters": {
+   
         "VPCId": {
             "Type": "String",
             "Default": "vpc-775cf811",
