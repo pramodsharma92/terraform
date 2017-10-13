@@ -156,11 +156,11 @@
       "Properties" : {
         "InstanceType" : { "Ref" : "InstanceType" },
         "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup" } ],
-     
+        
         "Tags" : [
                     {
                         "Key" : "Name",
-                        "Value" : "Citrix1"
+                        "Value" : "stack1"
                     }
                   ],
         
@@ -183,8 +183,39 @@
       }
     }
   },
+    {
+    "Parameters": {
+        "VPCId": {
+            "Type": "String",
+            "Default": "vpc-775cf811",
+            "Description": "Select virtual private cloud ID for this deployment!"
+        },
+        "SubnetIds": {
+            "Type": "List",
+            "Description": "Select two or more subnets in different Availability Zones!"
+        },
+        "EC2InstanceTypeParameter": {
+            "Type": "String",
+            "Default": "t2.micro",
+            "AllowedValues": [
+                "t2.micro",
+                "m1.small",
+                "m1.large"
+            ]
+        }
+    },
+    "Resources": {"myEC2Instance": {
+        "Type": "AWS::EC2::Instance",
+        "Properties": {
+            "ImageId": "ami-6869aa05",
+            "InstanceType": {"Ref": "EC2InstanceTypeParameter"},
+            "KeyName": "User1",
+            "SecurityGroupIds": ["subnet-4512e423"]
+        }
+    }}
+}
   
-   
+
   "Outputs" : {
     "InstanceId" : {
       "Description" : "InstanceId of the newly created EC2 instance",
@@ -204,4 +235,3 @@
     }
   }
 }
-
