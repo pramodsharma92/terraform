@@ -208,7 +208,7 @@
         "Properties": {
             "ImageId": "ami-6869aa05",
             "InstanceType": {"Ref": "EC2InstanceTypeParameter"},
-            "KeyName": "User1",
+            "KeyName": "my-key",
             "SecurityGroupIds": ["subnet-4512e423"]
         }
     }}
