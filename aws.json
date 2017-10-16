@@ -181,7 +181,15 @@
       }
     }
   },
-   
+   "VPCId": {
+            "Type": "String",
+            "Default": "vpc-775cf811",
+            "Description": "Select virtual private cloud ID for this deployment!"
+        },
+        "SubnetIds": {
+            "Type": "List",
+            "Description": "Select two or more subnets in different Availability Zones!"
+        },
         
         "EC2InstanceTypeParameter": {
             "Type": "String",
@@ -198,6 +206,8 @@
         "Properties": {
             "ImageId": "ami-6869aa05",
             "InstanceType": {"Ref": "EC2InstanceTypeParameter"},
+            "VPCId": {"Ref": "VPCId"},
+            "SubnetIds": {"Ref": "SubnetIds"},
             "KeyName": "my-key",
             "SecurityGroupIds": ["subnet-4512e423"]
         }
