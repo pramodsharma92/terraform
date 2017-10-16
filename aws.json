@@ -145,6 +145,8 @@
     "AWSRegionArch2AMI" : {
       "us-east-1"        : {"PV64" : "ami-2a69aa47", "HVM64" : "ami-6869aa05", "HVMG2" : "ami-22b68b59"},
       "us-west-2"        : {"HVM64" : "ami-47897a3f"},
+      
+    }
 
   },
 
@@ -154,11 +156,10 @@
       "Properties" : {
         "InstanceType" : { "Ref" : "InstanceType" },
         "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup" } ],
-        
         "Tags" : [
                     {
                         "Key" : "Name",
-                        "Value" : "stack1"
+                        "Value" : "Citrix1"
                     }
                   ],
         
@@ -181,39 +182,6 @@
       }
     }
   },
-   "VPCId": {
-            "Type": "String",
-            "Default": "vpc-775cf811",
-            "Description": "Select virtual private cloud ID for this deployment!"
-        },
-        "SubnetIds": {
-            "Type": "List",
-            "Description": "Select two or more subnets in different Availability Zones!"
-        },
-        
-        "EC2InstanceTypeParameter": {
-            "Type": "String",
-            "Default": "t2.micro",
-            "AllowedValues": [
-                "t2.micro",
-                "m1.small",
-                "m1.large"
-            ]
-        }
-    },
-    "Resources": {"myEC2Instance": {
-        "Type": "AWS::EC2::Instance",
-        "Properties": {
-            "ImageId": "ami-6869aa05",
-            "InstanceType": {"Ref": "EC2InstanceTypeParameter"},
-            "VPCId": {"Ref": "VPCId"},
-            "SubnetIds": {"Ref": "SubnetIds"},
-            "KeyName": "my-key",
-            "SecurityGroupIds": ["subnet-4512e423"]
-        }
-    }}
-}
-  
 
   "Outputs" : {
     "InstanceId" : {
